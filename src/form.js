@@ -54,7 +54,7 @@ class Form {
     event.preventDefault();
     const inputs = event.target.querySelectorAll("input");
     let formValues = {};
-    const splitDate = this.date.value.splitDate("-");
+    const splitDate = this.date.value.split("-");
     const date = `2020-${splitDate[1]}-${splitDate[2]}`;
     this.fetchData(date)
       .then((data) => {
