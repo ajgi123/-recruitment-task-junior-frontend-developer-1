@@ -76,7 +76,6 @@ class Form {
               ...formValues,
               photoSrc: URL.createObjectURL(input.files[0]),
             };
-            console.log("files", URL.createObjectURL(input.files[0]), input.files[0])
           } else {
             formValues = { ...formValues, [input.id]: input.value };
           }
