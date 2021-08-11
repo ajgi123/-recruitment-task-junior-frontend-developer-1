@@ -37,8 +37,8 @@ class Form {
   }
 
   hide = () => {
-    this.form.style.display = "none";
     this.date.setAttribute("required", "");
+    this.form.style.display = "none";
   };
 
   showForm = () => {
@@ -69,14 +69,14 @@ class Form {
         return err;
       })
       .then((err) => {
-        if (err) return;
+       // if (err) return;
         inputs.forEach((input) => {
-          if (input.id === "photo" && input.files.lenght > 0) {
+          if (input.id === "photo" && input.files[0]) {
             formValues = {
               ...formValues,
               photoSrc: URL.createObjectURL(input.files[0]),
-              photo: input.files[0],
             };
+            console.log("files", URL.createObjectURL(input.files[0]), input.files[0])
           } else {
             formValues = { ...formValues, [input.id]: input.value };
           }
