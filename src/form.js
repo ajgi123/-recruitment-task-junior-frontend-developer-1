@@ -69,7 +69,7 @@ class Form {
         return err;
       })
       .then((err) => {
-       // if (err) return;
+        if (err) return;
         inputs.forEach((input) => {
           if (input.id === "photo" && input.files[0]) {
             formValues = {
