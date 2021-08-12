@@ -7,10 +7,10 @@
     <script src="main.js" defer></script>
     <title>Calendar App</title>
   </head>
-  <body class="body" id="root">
-    <div id="modal" class="modal">
+  <body class="body display-flex-column" id="root">
+    <div id="modal" class="modal display-flex-column">
       <button class="modal__button">Close</button>
-      <form class="form" id="form">
+      <form class="form display-flex-column" id="form">
         <label for="name">Name</label>
         <input type="text" class="form__input" required id="name" name="name"
         onkeypress="return /[a-z]/i.test(event.key)" />
@@ -52,8 +52,8 @@
       </div>
     </div>
     <button id="addnew" class="button-fixed">Add new birthday</button>
-        <div class="calendar" id="calendar">
-          <div class="calendar__header">
+        <div class="calendar display-flex-column" id="calendar">
+          <div class="calendar__header display-flex-row">
             <button class="calendar__button-prev">prev</button>
             <h3 class="calendar__title"></h3>
             <button class="calendar__button-next">next</button>
@@ -61,11 +61,11 @@
           <table class="calendar__table">
             <template id="calendar_element">
                 <td class="calendar_element">
-                  <div class="calendar-element__div">
-                    <h3 class="calendar_element__day"></h3>
-                    <h3 class="calendar_element__name"></h3>
-                    <h3 class="calendar_element__age"></h3>
-                    <h3 class="calendar_element__email"></h3>
+                  <div class="calendar-element__div display-flex-column">
+                    <h5 class="calendar_element__day"></h3>
+                    <h5 class="calendar_element__name"></h3>
+                    <h5 class="calendar_element__age"></h3>
+                    <h5 class="calendar_element__email"></h3>
                     <img class="calendar_element__image"/>
                   </div>
                 </td>
@@ -74,11 +74,11 @@
         </div>
     <ol id="birthdaylist" class="birthdaylist">
       <template id="birtdaylist__element">
-        <li class="birthdaylist__element">
-          <h3 class="birthdaylist__date">12-12-1212</h3>
+        <li class="birthdaylist__element display-flex-column">
+          <h4 class="birthdaylist__date">12-12-1212</h3>
           <img id="image" class="birthdaylist__image" src="" alt="image" />
-          <h3 class="birthdaylist__name">John</h3>
-          <h4 class="birthdaylist__email">John@mail.com</h3>
+          <h4 class="birthdaylist__name">John</h3>
+          <h5 class="birthdaylist__email">John@mail.com</h3>
           <div class="birthdaylist__controls">
             <button class="birthdaylist__edit">Edit</button
             ><button class="birthdaylist__remove">Remove</button>
