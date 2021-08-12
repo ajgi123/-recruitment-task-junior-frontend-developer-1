@@ -5,6 +5,7 @@ class Form {
     this.index = false;
     this.modal = modal;
     this.date = document.getElementById("date");
+    this.photo = document.getElementById("photo");
     this.date.setAttribute("max", maxDate);
     this.form.addEventListener("submit", this.submitHandler);
   }
@@ -37,7 +38,7 @@ class Form {
   }
 
   hide = () => {
-    this.date.setAttribute("required", "");
+    this.photo.setAttribute("required", "");
     this.form.style.display = "none";
   };
 
