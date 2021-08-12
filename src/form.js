@@ -74,7 +74,7 @@ class Form {
           if (input.id === "photo" && input.files[0]) {
             formValues = {
               ...formValues,
-              photoSrc: URL.createObjectURL(input.files[0]),
+              [input.id]: URL.createObjectURL(input.files[0]),
             };
           } else {
             formValues = { ...formValues, [input.id]: input.value };
