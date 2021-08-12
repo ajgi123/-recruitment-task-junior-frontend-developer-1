@@ -1,0 +1,90 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="main.js" defer></script>
+    <title>Calendar App</title>
+  </head>
+  <body class="body display-flex-column" id="root">
+    <div id="modal" class="modal display-flex-column">
+      <button class="modal__button">Close</button>
+      <form class="form display-flex-column" id="form">
+        <label for="name">Name</label>
+        <input type="text" class="form__input" required id="name" name="name"
+        onkeypress="return /[a-z]/i.test(event.key)" />
+        <label for="photo">Photo</label>
+        <input
+          type="file"
+          class="form__input"
+          name="photo"
+          accept="image/png, image/jpeg"
+          id="photo"
+          required
+        />
+        <label for="date">Birth date</label>
+        <input type="date" class="form__input" id="date" name="date" required />
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          class="form__input"
+          id="email"
+          name="email"
+          required
+        />
+        <label for="phone">Phone number</label>
+        <input
+          type="tel"
+          class="form__input"
+          id="phone"
+          name="phone"
+          onkeypress="return /[0-9]|\./.test(event.key)"
+          pattern="[0-9]{9}"
+          required
+        />
+        <button type="submit" class="form__button">Submit</button>
+      </form>
+      <div class="description" id="description">
+        <image class="description__image" />
+        <h1 class="description__title"></h1>
+        <p class="description__text"></p>
+      </div>
+    </div>
+    <button id="addnew" class="button-fixed">Add new birthday</button>
+        <div class="calendar display-flex-column" id="calendar">
+          <div class="calendar__header display-flex-row">
+            <button class="calendar__button-prev">prev</button>
+            <h3 class="calendar__title"></h3>
+            <button class="calendar__button-next">next</button>
+          </div>
+          <table class="calendar__table">
+            <template id="calendar_element">
+                <td class="calendar_element">
+                  <div class="calendar-element__div display-flex-column">
+                    <h5 class="calendar_element__day"></h3>
+                    <h5 class="calendar_element__name"></h3>
+                    <h5 class="calendar_element__age"></h3>
+                    <h5 class="calendar_element__email"></h3>
+                    <img class="calendar_element__image"/>
+                  </div>
+                </td>
+            </template>
+          </table>
+        </div>
+    <ol id="birthdaylist" class="birthdaylist">
+      <template id="birtdaylist__element">
+        <li class="birthdaylist__element display-flex-column">
+          <h4 class="birthdaylist__date">12-12-1212</h3>
+          <img id="image" class="birthdaylist__image" src="" alt="image" />
+          <h4 class="birthdaylist__name">John</h3>
+          <h5 class="birthdaylist__email">John@mail.com</h3>
+          <div class="birthdaylist__controls">
+            <button class="birthdaylist__edit">Edit</button
+            ><button class="birthdaylist__remove">Remove</button>
+          </div>
+        </li>
+      </template>
+    </ol>
+  </body>
+</html>
