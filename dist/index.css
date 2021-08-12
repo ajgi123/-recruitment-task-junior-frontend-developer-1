@@ -1,9 +1,17 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* Css reset */
 
 /* Box sizing rules */
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -56,15 +64,30 @@ select {
 }
 
 .display-flex-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .display-flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -110,25 +133,30 @@ select {
 }
 
 .birthdaylist {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: (1fr) [3];
   grid-template-columns: repeat(3, 1fr);
   list-style: none;
 }
 
 @media screen and (max-width: 58rem) {
   .birthdaylist {
+    -ms-grid-columns: (1fr) [3];
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (max-width: 37rem) {
   .birthdaylist {
+    -ms-grid-columns: (1fr) [1];
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
 .birthdaylist__element {
   overflow: hidden;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   text-align: center;
   width: 17rem;
@@ -142,13 +170,20 @@ select {
   max-width: 100%;
   max-height: 50%;
   display: block;
+  -o-object-fit: contain;
   object-fit: contain;
 }
 
 .birthdaylist__controls {
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: space-between;
+  -ms-flex-align: space-between;
   align-items: space-between;
 }
 
@@ -167,9 +202,18 @@ select {
 .calendar__table {
   width: 95%;
   height: calc(100vh - 5rem);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
   align-items: stretch;
+  -webkit-box-pack: stretch;
+  -ms-flex-pack: stretch;
   justify-content: stretch;
   border-collapse: collapse;
 }
@@ -177,19 +221,26 @@ select {
 .calendar-table-days {
   width: 100%;
   height: calc(100% / 5);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .calendar_day {
   display: inline-block;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 
 .calendar_element {
   display: inline-block;
   overflow: hidden;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   background-color: #083d77;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   border: 1px solid black;
 }
@@ -208,6 +259,7 @@ select {
   display: block;
   max-width: 100%;
   max-height: 50%;
+  -o-object-fit: scale-down;
   object-fit: scale-down;
 }
 
@@ -218,8 +270,15 @@ select {
 
 .description {
   display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 100%;
 }
@@ -228,5 +287,6 @@ select {
   max-width: 100%;
   max-height: calc(100% - 4rem);
   display: block;
+  -o-object-fit: scale-down;
   object-fit: scale-down;
 }
