@@ -39,7 +39,7 @@ class ListOfBirthDays {
           state[key][i].name;
         clone.querySelector(".birthdaylist__date").innerHTML =
           state[key][i].date;
-        clone.querySelector("img").setAttribute("src", state[key][i].photoSrc);
+        clone.querySelector("img").setAttribute("src", state[key][i].photo);
         clone.querySelector(".birthdaylist__email").innerHTML =
           state[key][i].email;
         this.root.appendChild(clone);
