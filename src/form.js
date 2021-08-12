@@ -27,7 +27,7 @@ class Form {
       let input = document.getElementById(key);
       if (input) {
         if (key === "photo") {
-          input.removeAttribute("required");
+          input.required = false;
           return;
         }
         input.value = values[key];
@@ -71,7 +71,8 @@ class Form {
       .then((err) => {
         if (err) return;
         inputs.forEach((input) => {
-          if (input.id === "photo" && input.files[0]) {
+          if (input.id === "photo" && !input.files[0]) return;
+          if (input.id === "photo") {
             formValues = {
               ...formValues,
               [input.id]: URL.createObjectURL(input.files[0]),
