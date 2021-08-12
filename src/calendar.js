@@ -67,28 +67,16 @@ class Calendar {
     this.description.showObject(this.state[id][0]);
   };
 
-  init = () => {
-    this.calendarTitle = document.querySelector(".calendar__title");
-    this.changeTitle();
-    document
-      .querySelector(".calendar__button-prev")
-      .addEventListener("click", this.previousMonth);
-    document
-      .querySelector(".calendar__button-next")
-      .addEventListener("click", this.nextMonth);
-    this.table = document.querySelector("table");
-    this.createCalendarTable();
-  };
-
   createCalendarTable() {
     this.table.innerHTML = "";
 
     let tr = document.createElement("tr");
-    tr.classList.add("calendar-table-days-names");
+    tr.classList.add("calendar-table-days");
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     days.forEach((day) => {
       const th = document.createElement("th");
       th.innerHTML = day;
+      th.classList.add("calendar_day");
       tr.appendChild(th);
     });
     this.table.appendChild(tr);
@@ -111,14 +99,15 @@ class Calendar {
     }
 
     for (let i = 0; i < firstMonthDay - 1; i++) {
-      const td = document.createElement("td");
-      td.innerHTML = "";
+      const td = this.elementTemplate.content.cloneNode(true);
+      td.querySelector("td").classList.add("calendar-table-days-empty");
       tr.appendChild(td);
     }
 
     for (let i = firstMonthDay - 1; i < j; i++) {
       if (i % 7 === 0) {
         tr = document.createElement("tr");
+        tr.classList.add("calendar-table-days");
         this.table.appendChild(tr);
       }
       let month = `${this.month + 1}`;
@@ -144,7 +133,7 @@ class Calendar {
         clone.querySelector(".calendar_element__name").innerHTML =
           this.state[id][0].name;
         clone.querySelector(".calendar_element__age").innerHTML =
-          this.year - this.state[id][0].date.split("-")[0];
+          `age: ${this.year - this.state[id][0].date.split("-")[0]}`;
         clone.querySelector(".calendar_element__email").innerHTML =
           this.state[id][0].email;
         clone.querySelector("img").setAttribute("src", this.state[id][0].url);
@@ -154,6 +143,12 @@ class Calendar {
       }
 
       tr.appendChild(clone);
+    }
+    const lenght = tr.querySelectorAll("td").length;
+    for (let i = 0; i < 7 - lenght; i++) {
+      const td = this.elementTemplate.content.cloneNode(true);
+      td.querySelector("td").classList.add("calendar-table-days-empty");
+      tr.appendChild(td);
     }
 
     this.table.appendChild(tr);
