@@ -258,7 +258,7 @@ select {
 .calendar_element__image {
   display: block;
   max-width: 100%;
-  max-height: 50%;
+  max-height: calc(100% - 4rem);
   -o-object-fit: scale-down;
   object-fit: scale-down;
 }
@@ -285,7 +285,7 @@ select {
 
 .description__image {
   max-width: 100%;
-  max-height: calc(100% - 4rem);
+  max-height: 50%;
   display: block;
   -o-object-fit: scale-down;
   object-fit: scale-down;
