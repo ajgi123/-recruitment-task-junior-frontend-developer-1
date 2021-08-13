@@ -15,6 +15,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Merriweather", serif;
 }
 
 /* Remove default padding */
@@ -155,6 +156,7 @@ select {
 }
 
 .birthdaylist__element {
+  margin: 1rem;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -215,7 +217,6 @@ select {
   -webkit-box-pack: stretch;
   -ms-flex-pack: stretch;
   justify-content: stretch;
-  border-collapse: collapse;
 }
 
 .calendar-table-days {
@@ -253,14 +254,17 @@ select {
 .calendar-element__div {
   width: 100%;
   height: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0.3rem;
 }
 
 .calendar_element__image {
   display: block;
   max-width: 100%;
-  max-height: 50%;
-  -o-object-fit: scale-down;
-  object-fit: scale-down;
+  max-height: calc(100% - 4rem);
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .calendar_element__name,
@@ -285,7 +289,7 @@ select {
 
 .description__image {
   max-width: 100%;
-  max-height: calc(100% - 4rem);
+  max-height: 50%;
   display: block;
   -o-object-fit: scale-down;
   object-fit: scale-down;
