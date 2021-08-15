@@ -40,21 +40,21 @@ class State {
     return this.state[key][index];
   };
 
-  removeItem = (id) => {
+  removeItem = (id, update = false) => {
     const { key, index } = this.getKeyAndIndexFromId(id);
     if (this.state[key].length <= 1) {
       delete this.state[key];
     } else {
       this.state[key].splice(index, 1);
     }
+    if (update) return;
     this.updateObservers();
   };
 
   updateItem = (id, item) => {
     const newItem = { ...this.getElementFromId(id), ...item };
-    this.removeItem(id);
+    this.removeItem(id, true);
     this.addItem(newItem);
-    this.updateObservers();
   };
 }
 
