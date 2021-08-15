@@ -4,6 +4,7 @@ class Calendar {
     this.day = this.now.getDate();
     this.month = this.now.getMonth();
     this.year = this.now.getFullYear();
+    this.eventListeners = [];
     this.state = state;
     this.template = document.getElementById("calendar");
     this.elementTemplate = document.getElementById("calendar_element");
@@ -67,7 +68,17 @@ class Calendar {
     this.description.showObject(this.state[id][0]);
   };
 
+  removeEventListeners = () => {
+    this.eventListeners.forEach((item) => {
+      item.removeEventListeners("click", () => {
+        this.clickHandler(id);
+      });
+    });
+    this.eventListeners = [];
+  };
+
   createCalendarTable() {
+    this.removeEventListeners();
     this.table.innerHTML = "";
 
     let tr = document.createElement("tr");
@@ -129,17 +140,19 @@ class Calendar {
         i - firstMonthDay + 2;
 
       if (this.state && this.state[id]) {
-        console.log(id);
         clone.querySelector(".calendar_element__name").innerHTML =
           this.state[id][0].name;
-        clone.querySelector(".calendar_element__age").innerHTML =
-          `age: ${this.year - this.state[id][0].date.split("-")[0]}`;
+        clone.querySelector(".calendar_element__age").innerHTML = `age: ${
+          this.year - this.state[id][0].date.split("-")[0]
+        }`;
         clone.querySelector(".calendar_element__email").innerHTML =
           this.state[id][0].email;
         clone.querySelector("img").setAttribute("src", this.state[id][0].url);
-        clone.querySelector("td").addEventListener("click", () => {
+        let td = clone.querySelector("td");
+        td.addEventListener("click", () => {
           this.clickHandler(id);
         });
+        this.eventListeners.push(td);
       }
 
       tr.appendChild(clone);
