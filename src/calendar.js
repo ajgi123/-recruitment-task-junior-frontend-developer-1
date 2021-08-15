@@ -70,7 +70,7 @@ class Calendar {
 
   removeEventListeners = () => {
     this.eventListeners.forEach((item) => {
-      item.removeEventListeners("click", () => {
+      item.removeEventListener("click", () => {
         this.clickHandler(id);
       });
     });
