@@ -118,11 +118,12 @@ select {
   height: 100vh;
   background-color: #f4d35e;
   padding: 3rem;
+  overflow-y: scroll;
 }
 
 .button-fixed {
   position: fixed;
-  bottom: 1rem;
+  bottom: 0.2rem;
   right: 1rem;
 }
 
@@ -143,8 +144,8 @@ select {
 
 @media screen and (max-width: 58rem) {
   .birthdaylist {
-    -ms-grid-columns: (1fr) [3];
-    grid-template-columns: repeat(3, 1fr);
+    -ms-grid-columns: (1fr) [2];
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -219,9 +220,17 @@ select {
   justify-content: stretch;
 }
 
-.calendar-table-days {
+.calendar__row-days {
   width: 100%;
-  height: calc(100% / 5);
+  height: 1.1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.calendar__row {
+  width: 100%;
+  height: calc((100% - 1.1rem) / 6);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
