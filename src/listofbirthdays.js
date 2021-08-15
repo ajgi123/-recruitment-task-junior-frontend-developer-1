@@ -25,8 +25,8 @@ class ListOfBirthDays {
 
   update(state) {
     this.root.innerHTML = "";
-    const keys = Object.keys(state);
-    keys.forEach((key) => {
+    const stateKeys = Object.keys(state);
+    stateKeys.forEach((key) => {
       for (let i = 0; i < state[key].length; i++) {
         const clone = this.elementTemplate.content.cloneNode(true);
         clone
@@ -35,13 +35,17 @@ class ListOfBirthDays {
         clone
           .querySelector(".birthdaylist__remove")
           .setAttribute("id", `remove_${key}.${i}`);
-        clone.querySelector(".birthdaylist__name").innerHTML =
-          state[key][i].name;
-        clone.querySelector(".birthdaylist__date").innerHTML =
-          state[key][i].date;
-        clone.querySelector("img").setAttribute("src", state[key][i].photo);
-        clone.querySelector(".birthdaylist__email").innerHTML =
-          state[key][i].email;
+        const objectKeys = Object.keys(state[key][i]);
+        objectKeys.forEach((objkey) => {
+          const htmlObj = clone.querySelector(`.birthdaylist__${objkey}`);
+          if (!htmlObj) return;
+
+          if (objkey === "photo") {
+            htmlObj.setAttribute("src", state[key][i].photo);
+            return;
+          }
+          htmlObj.innerHTML = state[key][i][objkey];
+        });
         this.root.appendChild(clone);
       }
     });
