@@ -6,6 +6,7 @@ class Form {
     this.modal = modal;
     this.date = document.getElementById("date");
     this.photo = document.getElementById("photo");
+    this.button = document.querySelector(".form__button");
     this.date.setAttribute("max", maxDate);
     this.form.addEventListener("submit", this.submitHandler);
   }
@@ -15,6 +16,9 @@ class Form {
       const res = await fetch(
         `https://api.nasa.gov/planetary/apod?date=${date}&api_key=qA2AfhD777YC902ujb9PDdj7Udf1Nb8zQOB4EApm`
       );
+      if (!res.ok) {
+        throw new Error(`Http error: ${res.status}`);
+      }
       const data = await res.json();
       return data;
     } catch (err) {
@@ -53,6 +57,8 @@ class Form {
 
   submitHandler = (event) => {
     event.preventDefault();
+    this.button.innerHTML = "Loading...";
+    this.button.disabled = true;
     const inputs = event.target.querySelectorAll("input");
     let formValues = {};
     const splitDate = this.date.value.split("-");
@@ -90,6 +96,10 @@ class Form {
           this.state.addItem(formValues);
         }
         this.modal.closeModal();
+      })
+      .finally(() => {
+        this.button.innerHTML = "Submit";
+        this.button.disabled = false;
       });
   };
 }
