@@ -82,7 +82,7 @@ class Calendar {
     this.table.innerHTML = "";
 
     let tr = document.createElement("tr");
-    tr.classList.add("calendar-table-days");
+    tr.classList.add("calendar__row-days");
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     days.forEach((day) => {
       const th = document.createElement("th");
@@ -105,7 +105,7 @@ class Calendar {
 
     if (firstMonthDay - 1 !== 0) {
       tr = document.createElement("tr");
-      tr.classList.add("calendar-table-days");
+      tr.classList.add("calendar__row");
       this.table.appendChild(tr);
     }
 
@@ -118,7 +118,7 @@ class Calendar {
     for (let i = firstMonthDay - 1; i < j; i++) {
       if (i % 7 === 0) {
         tr = document.createElement("tr");
-        tr.classList.add("calendar-table-days");
+        tr.classList.add("calendar__row");
         this.table.appendChild(tr);
       }
       let month = `${this.month + 1}`;
